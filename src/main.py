@@ -71,7 +71,7 @@ async def on_message(message: DiscordMessage):
         # save message as embedding, vectorize
         timestamp = int(time())
         timestring = timestring = timestamp_to_datetime(timestamp)
-        user = message.author.name
+        user = message.author.nick or message.author.name
         extracted_message = message.content
         info = {
             'speaker': user,
@@ -83,9 +83,9 @@ async def on_message(message: DiscordMessage):
 
         if message.attachments:
             info['attachments'] = [a.proxy_url for a in message.attachments if a.size < 2_000_000]
-
+    
         logger.info(
-            f"incoming channel message to process - {message.author.nick}: {message.content[:50]}"
+            f"incoming channel message to process - {user}: {message.content[:50]}"
         )
 
         filename = 'log_%s_user' % timestamp

@@ -48,7 +48,7 @@ MAX_CHARS_PER_REPLY_MSG = (
     1500  # discord has a 2k limit, we just break message into 1.5k
 )
 # time in seconds - messages older than this will be ignored when processing
-MAX_MESSAGE_TIME_DELTA = 60 * 60 * 3  # 3 hours
+MAX_MESSAGE_TIME_DELTA = 60 * 60 * 1  # 3 hours
 
 DB_FILE = os.path.join(SCRIPT_DIR, "..", "db.sqlite3")
 
